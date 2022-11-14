@@ -47,6 +47,7 @@ public class ServerConfig extends WsConfigurerAdapter {
 
         //encrypt the response
         securityInterceptor.setSecurementEncryptionUser("client-app");
+        securityInterceptor.setSecurementEncryptionParts("{Content}{http://spring.io/guides/gs-producing-web-service}getAllCountriesResponse");
         securityInterceptor.setSecurementEncryptionParts("{Content}{http://spring.io/guides/gs-producing-web-service}getCountryResponse");
         securityInterceptor.setSecurementSignatureParts("{Element}{http://schemas.xmlsoap.org/soap/envelope/}Body;\n" +
                 "{Element}{http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd}Timestamp");

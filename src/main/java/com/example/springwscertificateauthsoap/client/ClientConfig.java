@@ -1,7 +1,6 @@
 package com.example.springwscertificateauthsoap.client;
 
 
-import com.example.springwscertificateauthsoap.GeneratedXSD.ObjectFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

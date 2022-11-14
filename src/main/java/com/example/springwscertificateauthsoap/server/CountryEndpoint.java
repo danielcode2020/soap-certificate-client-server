@@ -1,8 +1,6 @@
 package com.example.springwscertificateauthsoap.server;
 
-import com.example.springwscertificateauthsoap.GeneratedXSD.GetCountriesResponse;
-import com.example.springwscertificateauthsoap.GeneratedXSD.GetCountryRequest;
-import com.example.springwscertificateauthsoap.GeneratedXSD.GetCountryResponse;
+import com.example.springwscertificateauthsoap.GeneratedXSD.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -31,11 +29,15 @@ public class CountryEndpoint {
         return response;
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getCountriesRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllCountriesRequest")
     @ResponsePayload
-    public GetCountriesResponse getCountriesResponse(){
-        GetCountriesResponse response = new GetCountriesResponse();
-        response.setCountries(countryRepository.getCountries());
+    public GetAllCountriesResponse getCountriesResponse(@RequestPayload GetAllCountriesRequest request){
+        GetAllCountriesResponse response = new GetAllCountriesResponse();
+
+        for (Country country: countryRepository.getCountries()){
+            response.getCountry().add(country);
+        }
+
         return response;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.springwscertificateauthsoap.client;
 
 
+import com.example.springwscertificateauthsoap.GeneratedXSD.GetCountriesResponse;
 import com.example.springwscertificateauthsoap.GeneratedXSD.GetCountryRequest;
 import com.example.springwscertificateauthsoap.GeneratedXSD.GetCountryResponse;
 import org.slf4j.Logger;
@@ -31,8 +32,16 @@ public class CountryClient{
                 .marshalSendAndReceive("http://localhost:8090/ws/countries", request,
                         new SoapActionCallback(
                                 "http://spring.io/guides/gs-producing-web-service/GetCountryRequest"));
-
-
         return response;
     }
+
+    public GetCountriesResponse getCountries() throws Exception {
+
+        GetCountriesResponse response = (GetCountriesResponse) clientConfig.webServiceTemplate()
+                .marshalSendAndReceive("http://localhost:8090/ws/countries", null,
+                        new SoapActionCallback("http://spring.io/guides/gs-producing-web-service/GetCountriesRequest"));
+        return response;
+    }
+
+
 }

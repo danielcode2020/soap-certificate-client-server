@@ -8,6 +8,7 @@ import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -46,5 +47,9 @@ public class CountryRepository {
     public Country findCountry(String name) {
         Assert.notNull(name, "The country's name must not be null");
         return countries.get(name);
+    }
+
+    public List<Country> getCountries(){
+        return countries.values().stream().toList();
     }
 }

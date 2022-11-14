@@ -9,6 +9,7 @@
 package com.example.springwscertificateauthsoap.GeneratedXSD;
 
 import javax.xml.bind.annotation.XmlRegistry;
+import java.util.List;
 
 
 /**

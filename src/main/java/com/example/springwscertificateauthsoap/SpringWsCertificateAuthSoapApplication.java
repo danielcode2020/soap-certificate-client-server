@@ -15,19 +15,4 @@ public class SpringWsCertificateAuthSoapApplication {
         SpringApplication.run(SpringWsCertificateAuthSoapApplication.class, args);
     }
 
-    @Bean
-    @Profile("client")
-    CommandLineRunner lookup(CountryClient quoteClient) {
-        return args -> {
-            String country = "Poland";
-
-            if (args.length > 0) {
-                country = args[0];
-            }
-            GetCountryResponse response = quoteClient.getCountry(country);
-            System.err.println(response.getCountry().getCurrency());
-            System.err.print(response.getCountry().getPopulation());
-        };
-    }
-
 }

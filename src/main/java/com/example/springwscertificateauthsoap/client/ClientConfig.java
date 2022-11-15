@@ -39,6 +39,7 @@ public class ClientConfig {
         // encrypt the request
         securityInterceptor.setSecurementEncryptionUser("server-app");
         securityInterceptor.setSecurementEncryptionCrypto(cryptoFactoryBeanClient.getObject());
+        securityInterceptor.setSecurementEncryptionParts("{Content}{http://spring.io/guides/gs-producing-web-service}getAllCountries");
         securityInterceptor.setSecurementEncryptionParts("{Content}{http://spring.io/guides/gs-producing-web-service}getCountryResponse");
         securityInterceptor.setSecurementSignatureKeyIdentifier("DirectReference");
         securityInterceptor.setSecurementSignatureParts("{Element}{http://schemas.xmlsoap.org/soap/envelope/}Body;\n" +

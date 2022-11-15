@@ -1,6 +1,8 @@
 package com.example.springwscertificateauthsoap.client;
 
 
+import com.example.springwscertificateauthsoap.GeneratedXSD.GetAllCountriesRequest;
+import com.example.springwscertificateauthsoap.GeneratedXSD.GetAllCountriesResponse;
 import com.example.springwscertificateauthsoap.GeneratedXSD.GetCountryRequest;
 import com.example.springwscertificateauthsoap.GeneratedXSD.GetCountryResponse;
 import org.slf4j.Logger;
@@ -33,6 +35,19 @@ public class CountryClient{
                                 "http://spring.io/guides/gs-producing-web-service/GetCountryRequest"));
         return response;
     }
+
+    public GetAllCountriesResponse getAllCountries() throws Exception {
+        GetAllCountriesRequest request = new GetAllCountriesRequest();
+
+        log.info("Requesting all countries");
+
+        GetAllCountriesResponse response = (GetAllCountriesResponse) clientConfig.webServiceTemplate()
+                .marshalSendAndReceive("http://localhost:8090/ws/countries", request,
+                        new SoapActionCallback(
+                                "http://spring.io/guides/gs-producing-web-service/GetAllCountriesRequest"));
+        return response;
+    }
+
 
 
 

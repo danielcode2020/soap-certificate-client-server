@@ -1,5 +1,6 @@
 package com.example.springwscertificateauthsoap.controller;
 
+import com.example.springwscertificateauthsoap.GeneratedXSD.GetAllCountriesResponse;
 import com.example.springwscertificateauthsoap.GeneratedXSD.GetCountryResponse;
 import com.example.springwscertificateauthsoap.client.CountryClient;
 import org.springframework.context.annotation.Profile;
@@ -20,6 +21,11 @@ public class TestController {
     public GetCountryResponse getCountryByName(@PathVariable String name) throws Exception {
         System.out.println(name);
         return countryClient.getCountry(name);
+    }
+
+    @GetMapping
+    public GetAllCountriesResponse getAllCountries() throws Exception {
+        return countryClient.getAllCountries();
     }
 
 }
